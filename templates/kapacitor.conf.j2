@@ -15,7 +15,7 @@ data_dir = "{{ kapacitor_data_directory }}"
   # it servers both as a write endpoint
   # and as the API endpoint for all other
   # Kapacitor calls.
-  bind-address = "{{ kapacitor_http_bind_address }}"
+  bind-address = "{{ kapacitor_http_bind_host }}:{{ kapacitor_http_bind_port }}"
   auth-enabled = {{ kapacitor_http_auth_enabled }}
   log-enabled = {{ kapacitor_http_log_enabled }}
   write-tracing = {{ kapacitor_http_write_tracing }}

@@ -8,26 +8,20 @@
     owner: kapacitor
     group: kapacitor
     mode: 0744
+  notify:
+    - restart kapacitord
   when: kapacitor_template_configuration
 
-- name: Start/Restart the Kapacitor service
+- name: Start the Kapacitor service
   service:
     name: kapacitor
-    state: restarted
+    state: started
     enabled: yes
-  register: kapacitor_started
   when: kapacitor_start_service
 
-- name: Collect service status
-  command: service kapacitor status
-  register: kapacitor_service_status
-  when: kapacitor_start_service
-  ignore_errors: yes
-
-- name: Assert status of Kapacitor service
-  assert:
-    that:
-      - "kapacitor_service_status.rc == 0"
+- name: Wait for the Kapacitor API to be up
+  wait_for:
+    port: "{{ kapacitor_http_bind_port }}"
   when: kapacitor_start_service
 
 - name: Check for existing tasks

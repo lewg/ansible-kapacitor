@@ -9,7 +9,6 @@ kapacitor_hostname:
 kapacitor_data_directory: /var/lib/kapacitor
 
 # [http]
-kapacitor_http_bind_host: ""
 kapacitor_http_bind_port: 9092
 kapacitor_http_auth_enabled: "false"
 kapacitor_http_log_enabled: "true"

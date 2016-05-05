@@ -51,6 +51,16 @@ An example playbook is included in the `test.yml` file. There is also a `Vagrant
 
 Where `tick` is the path to the TICKscript file. If placed in the `/files` directory of the role repository, you can just specify the name directly (for example, `cpu_alert.tick`).
 
+Testing
+-------
+
+You can test the role with [molecule](http://molecule.readthedocs.io/en/master/) against either Ubuntu (trusty64) or Centos 7.2:
+
+```
+% molecule test --platform trusty64
+% molecule test --platform centos72
+```
+
 Contributions and Feedback
 --------------------------
 
@@ -65,4 +75,3 @@ Author
 ------
 
 Created by [Ross McDonald](https://github.com/rossmcdonald).
-

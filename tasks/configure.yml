@@ -21,7 +21,9 @@
 
 - name: Wait for the Kapacitor API to be up
   wait_for:
+    host: "{{ kapacitor_http_bind_host | default('127.0.0.1') }}"
     port: "{{ kapacitor_http_bind_port }}"
+    timeout: 60
   when: kapacitor_start_service
 
 - name: Check for existing tasks

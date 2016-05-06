@@ -17,3 +17,8 @@ def test_tick_file(File):
 def test_tick_load(Command):
     tick_load = Command("kapacitor list tasks")
     assert "cpu_alert" in tick_load.stdout
+
+def test_cluster_id(File):
+    cluster_id = File("/var/lib/kapacitor/cluster.id")
+    assert cluster_id.exists
+    assert "myclusterid" in cluster_id.content_string

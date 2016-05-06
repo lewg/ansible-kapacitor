@@ -12,6 +12,19 @@
     - restart kapacitord
   when: kapacitor_template_configuration
 
+- name: Set the cluster id
+  template:
+    src: cluster.id.j2
+    dest: "/var/lib/kapacitor/cluster.id"
+    force: yes
+    owner: kapacitor
+    group: kapacitor
+    mode: 0644
+  when: kapacitor_cluster_id is defined
+  notify:
+    - restart kapacitord
+
+
 - name: Start the Kapacitor service
   service:
     name: kapacitor

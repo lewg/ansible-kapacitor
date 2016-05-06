@@ -6,6 +6,7 @@
   roles:
     - role: ansible-kapacitor
       influxdb_install_version: stable
+      kapacitor_cluster_id: myclusterid
       kapacitor_tasks_to_enable:
       - name: cpu_alert
         type: stream
